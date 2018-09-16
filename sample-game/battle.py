@@ -82,7 +82,6 @@ def check_friend(my, job_name, mgr):
 def battle(hero, enemy):
     # 体調を -10 〜 10 で表します
     pep = random.randint(-10, 10)
-    import pdb; pdb.set_trace()
 
     # 主人公が戦います (攻撃力 = 年齢 + 体調)
     if hero.age + pep > enemy.attack:

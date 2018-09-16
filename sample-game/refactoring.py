@@ -43,18 +43,13 @@ class GameManager:
 
 
 # 勇者としての条件をチェックします
-def check_hero(chara, mgr):
-    print('こんにちは' + chara.name)
-    print('職業は' + chara.job)
-    print('年齢は' + str(chara.age))
-    if chara.job == "勇者" and hero.age >= 16:
-        print("では魔王を退治してきてください")
-    elif hero.job == "勇者" or hero.age >= 16:
-        print("もう少し頑張ってください")
-        mgr.end()
+def check_hero(job, age):
+    if job == "勇者" and age >= 16:
+        return True, "では魔王を退治してきてください"
+    elif job == "勇者" or age >= 16:
+        return False, "もう少し頑張ってください"
     else:
-        print("頑張ってください")
-        mgr.end()
+        return False, "頑張ってください"
 
 
 # 道具をプレゼントします
@@ -69,20 +64,18 @@ def present_equipment(chara):
     chara.equipment = bag
 
 
-def check_friend(my, job_name, mgr):
+def check_friend(my, job_name):
     result = False
     for friend in my.friend_lst:
         if job_name == friend.job:
             result = True
-    if not result:
-        mgr.end()
+    return result
 
 
 # 敵と対戦します
 def battle(hero, enemy):
     # 体調を -10 〜 10 で表します
     pep = random.randint(-10, 10)
-    import pdb; pdb.set_trace()
 
     # 主人公が戦います (攻撃力 = 年齢 + 体調)
     if hero.age + pep > enemy.attack:
@@ -106,7 +99,15 @@ if __name__ == "__main__":
     hero = Character('ロト', '勇者', 16)
 
     # 勇者の条件をチェックします
-    check_hero(chara=hero, mgr=game_manager)
+    print('こんにちは' + hero.name)
+    print('職業は' + hero.job)
+    print('年齢は' + str(hero.age))
+
+    hero_check, mes = check_hero(hero.job, hero.age)
+    if hero_check:
+        print(mes)
+    else:
+        game_manager.end()
 
     if game_manager.end_flg:
         print('お疲れ様でしたゲームは終了です')
@@ -121,7 +122,9 @@ if __name__ == "__main__":
     print(hero.name + 'に' + wizard.name + 'が仲間になった')
 
     # 勇者のメンバーに魔法つかいがいるかチェックします
-    check_friend(my=hero, job_name='魔法使い', mgr=game_manager)
+    friend_check = check_friend(my=hero, job_name='魔法使い')
+    if not friend_check:
+        game_manager.end()
 
     if game_manager.end_flg:
         print('お疲れ様でしたゲームは終了です')

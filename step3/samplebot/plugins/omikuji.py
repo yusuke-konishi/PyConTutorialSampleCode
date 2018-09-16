@@ -16,3 +16,14 @@ OMIKUJI_LIST = [
 @respond_to('おみくじ')
 def omikuji(message):
     message.reply(random.choice(OMIKUJI_LIST))
+
+
+LUNCH_TYPE = [
+    '中華',
+    '和食',
+    'イタリアン',
+]
+
+@respond_to('ランチ')
+def lunch(message):
+    message.reply(random.choice(LUNCH_TYPE))

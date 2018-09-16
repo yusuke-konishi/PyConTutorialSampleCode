@@ -80,7 +80,8 @@ if __name__ == "__main__":
     hero = Character('ロト', '勇者', 16)
 
     # 勇者の条件をチェックします
-    check_hero(chara=hero, mgr=game_manager)
+    # check_hero(chara=hero, mgr=game_manager)
+    check_hero(hero, game_manager)
     if game_manager.end_flg:
         print('お疲れ様でしたゲームは終了です')
         exit()

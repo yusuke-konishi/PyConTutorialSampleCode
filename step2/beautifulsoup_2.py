@@ -14,5 +14,6 @@ if __name__ == "__main__":
     soup = BeautifulSoup(html, 'html.parser')
 
     # アクセスランキングTOP5を抽出して表示
-    for element in soup.find_all('dt', class_='ttl')[0:5]:
+    # for element in soup.find_all('dt', class_='ttl')[0:5]:
+    for element in soup.find_all('p', class_='ttl')[0:5]:
         print(element.text.strip())

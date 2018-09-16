@@ -71,10 +71,10 @@ if __name__ == "__main__":
 
 
     # はてなブックマークの人気エントリ
-    url = 'http://feeds.feedburner.com/hatena/b/hotentry'
+    # url = 'http://feeds.feedburner.com/hatena/b/hotentry'
     ### 他のRSSのだとうまくいくしょうか？
     # はてなブックマーク ITカテゴリ人気エントリ
-    # url = 'http://b.hatena.ne.jp/hotentry/it.rss'
+    url = 'http://b.hatena.ne.jp/hotentry/it.rss'
     # techcrunch
     # url = 'http://jp.techcrunch.com/feed/'
 
@@ -82,7 +82,7 @@ if __name__ == "__main__":
     feeds = get_feeds(url)
 
     ### 今回取得した結果を保存しておく？
-    # save_db_feeds(feeds)
+    save_db_feeds(feeds)
 
     ### 以前保存された結果も表示する？
     # saved_feeds = get_db_feeds()

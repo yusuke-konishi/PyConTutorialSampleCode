@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
-x = '5'
-y = [1]
+# x = '5'
+x = 5
+# y = [1]
+y = [1,2]
 
 try:
     print(x + 1) # 文字列と数値の加算のため例外(TypeError)が発生する
     print(y[1])
-    raise Exception
+    # raise Exception
 except TypeError: # TypreError発生時の処理を記述する
     print('型が違います')
 except IndexError: # IndexError発生時の処理を記述する

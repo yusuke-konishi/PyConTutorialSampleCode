@@ -9,10 +9,14 @@ if __name__ == "__main__":
     c = conn.cursor()
 
     # テーブルの作成
-    c.execute("CREATE TABLE IF NOT EXISTS sample_table (id INTEGER, name TEXT, age int)")
+    # c.execute("CREATE TABLE IF NOT EXISTS sample_table (id INTEGER, name TEXT, age int)")
+    c.execute("CREATE TABLE IF NOT EXISTS sample_table (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, age int)")
+
     # データの挿入
-    c.execute("INSERT INTO sample_table VALUES (1, 'ブレイン太郎', 20)")
-    c.execute("INSERT INTO sample_table VALUES (2, 'ブレイン花子', 17)")
+    # c.execute("INSERT INTO sample_table VALUES (1, 'ブレイン太郎', 20)")
+    c.execute("INSERT INTO sample_table VALUES ('ブレイン太郎', 20)")
+    # c.execute("INSERT INTO sample_table VALUES (2, 'ブレイン花子', 17)")
+    c.execute("INSERT INTO sample_table VALUES ('ブレイン花子', 17)")
     # SQLデータの確定
     conn.commit()
 
